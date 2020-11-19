@@ -125,8 +125,8 @@ const renderElement = async (element: HTMLElement, opts: Partial<Options>): Prom
         y: options.y,
         scrollX: options.scrollX,
         scrollY: options.scrollY,
-        width: options.width,
-        height: options.height,
+        width: clonedElement.offsetWidth,
+        height: clonedElement.offsetHeight,
         windowWidth: options.windowWidth,
         windowHeight: options.windowHeight
     };
