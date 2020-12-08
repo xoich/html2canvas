@@ -114,6 +114,9 @@ const renderElement = async (element: HTMLElement, opts: Partial<Options>): Prom
                     : bodyBackgroundColor
                 : documentBackgroundColor
             : defaultBackgroundColor;
+	    
+    const clonedBounds =
+        isBodyElement(clonedElement) || isHTMLElement(clonedElement) ? parseDocumentSize(ownerDocument) : parseBounds(clonedElement);
 
     const renderOptions = {
         id: instanceName,
@@ -121,8 +124,8 @@ const renderElement = async (element: HTMLElement, opts: Partial<Options>): Prom
         canvas: options.canvas,
         backgroundColor,
         scale: options.scale,
-        x: options.x,
-        y: options.y,
+        x: clonedBounds.left,
+        y: clonedBounds.top,
         scrollX: options.scrollX,
         scrollY: options.scrollY,
         width: clonedElement.offsetWidth,
